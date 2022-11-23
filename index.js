@@ -9,16 +9,18 @@ for (var i = 0; i < buttons.length; i++) {
 
         keyCase(buttonInnerHTML);
 
+        buttonAnimation(buttonInnerHTML);
+
     });
 
 }
 
 document.addEventListener("keydown", function(e){
 
-    console.log(e);
 
-    var key = e.key;
-    keyCase(key.toLowerCase());
+    var key = e.key.toLowerCase();
+    keyCase(key);
+    buttonAnimation(key);
 
 })
 
@@ -64,5 +66,14 @@ function keyCase(key){
 
 
     }
+
+}
+
+function buttonAnimation(key){
+    var activeButton = document.querySelector("." + key);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    }, 100);
 
 }
